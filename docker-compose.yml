@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  nest-api_pg:
+    image: postgres:15.1
+    container_name: nest-api_pg
+    restart: always
+    environment:
+      POSTGRES_DB: nest-apidb
+      POSTGRES_USER: unest-api_pg
+      POSTGRES_PASSWORD: secret1234
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
